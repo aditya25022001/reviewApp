@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "description": "A review application to review all sorts of entities be it movies, places, restaurants etc.",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server" : "nodemon backend/server",
-    "client" : "npm start --prefix frontend",
-    "dev" : "concurrently \"npm run server\" \"npm run client\"",
-    "import" : "npm backend/seeder",
-    "destroy" : "npm backend/seeder -d"
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "import": "npm backend/seeder",
+    "destroy": "npm backend/seeder -d"
   },
   "repository": {
     "type": "git",
@@ -31,7 +32,6 @@
   "homepage": "https://github.com/aditya25022001/reviewApp#readme",
   "dependencies": {
     "axios": "^0.21.4",
-    "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "concurrently": "^6.2.1",
     "dotenv": "^10.0.0",
