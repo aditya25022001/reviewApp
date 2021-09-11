@@ -1,0 +1,50 @@
+{
+  "name": "reviewapp",
+  "version": "1.0.0",
+  "description": "A review application to review all sorts of entities be it movies, places, restaurants etc.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server" : "nodemon backend/server",
+    "client" : "npm start --prefix frontend",
+    "dev" : "concurrently \"npm run server\" \"npm run client\"",
+    "import" : "npm backend/seeder",
+    "destroy" : "npm backend/seeder -d"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aditya25022001/reviewApp.git"
+  },
+  "keywords": [
+    "Review",
+    "Movies",
+    "Applications",
+    "Web",
+    "Web",
+    "Series"
+  ],
+  "author": "Aditya Uday Ubale",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aditya25022001/reviewApp/issues"
+  },
+  "homepage": "https://github.com/aditya25022001/reviewApp#readme",
+  "dependencies": {
+    "axios": "^0.21.4",
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
+    "concurrently": "^6.2.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "express-handlebars": "^5.3.3",
+    "hbs": "^4.1.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.5",
+    "multer": "^1.4.3",
+    "nodemailer": "^6.6.3",
+    "nodemailer-express-handlebars": "^4.0.0",
+    "nodemon": "^2.0.12",
+    "uuid": "^8.3.2"
+  }
+}
