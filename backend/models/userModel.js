@@ -4,32 +4,41 @@ import bcrypt from 'bcryptjs'
 const userSchema = mongoose.Schema({
     name:{
         type:String,
-        required:true,
+        required:true
     },
     email:{
         type:String,
         required:true,
-        unique:true,
+        unique:true
     },
     password:{
         type:String,
-        required:true,
+        required:true
     },
     number:{
         type:String,
         required:true,
-        unique:true,
-    }
+        unique:true
+    },
+    points:{
+        type:Number,
+        required:true,
+        default:0
+    },
+    reviews:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Review'
+    }]
 },{
     timestamps:true
 })
 
-//match passwords
+//used to compare the passwords entered and the one in the database for logging in
 userSchema.methods.matchPassword = async function(enteredPassword){
     return await bcrypt.compare(enteredPassword, this.password)
 }
 
-//save passwords in a hashed way
+//save hashed passwords in the database
 userSchema.pre('save', async function(next){
     if(!this.isModified('password')){
         next()

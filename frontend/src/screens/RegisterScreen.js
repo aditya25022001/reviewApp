@@ -1,13 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Form } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux'
+import { Message } from '../components/Message'
+import { Loader } from '../components/Loader'
+import { userRegisterAction } from '../actions/authActions'
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
-import { Link } from 'react-router-dom';
 
-export const RegisterScreen = () => {
+export const RegisterScreen = ({ location, history }) => {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [number, setNumber] = useState("")
@@ -16,9 +20,42 @@ export const RegisterScreen = () => {
     const [showPassword, setShowPassword] = useState(false)
     const [showConfirmPassword, setShowConfirmPassword] = useState(false)
     const [terms, setTerms] = useState(false)
+
+    const [userError, setUserError] = useState("")
+    const [open, setOpen] = useState(false)
+
+    const dispatch = useDispatch()
+    
+    const register = useSelector(state => state.register)
+    const { loading, error, userInfo } = register
+    
+    const redirect = location.search ? location.search.split('=')[1] : '/'
+
+    const registerHandler = (e) => {
+        e.preventDefault()
+        console.log({name,email,password,number,terms})
+        dispatch(userRegisterAction(name, email, number, password))
+    }
+
+    if(open){
+        setTimeout(()=>{
+            setOpen(false)
+            setUserError("")
+        },4000)
+    }
+
+    useEffect(()=>{
+        if(userInfo){
+            history.push(redirect)
+        }
+    },[history, userInfo, redirect])
+
     return (
         <div>
-            <Form className='p-4 rounded mx-auto form_component'>
+            {loading && <Loader/>}
+            {open && <Message variant='error' message={userError} />}
+            {error && <Message variant='error' message={error} />}
+            <Form onSubmit={registerHandler} className='p-4 rounded mx-auto form_component'>
                 <div className='mb-4 w-100 pl-1 py-1 form_header'>Sign Up</div>
                 <Form.Group className='mb-3' >
                     <TextField autoFocus={true} label="Name" required variant="outlined" value={name} onChange={e => setName(e.target.value)} type="text" />
