@@ -1,4 +1,4 @@
-import { USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAIL } from '../constants/authConstants'
+import { USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAIL, USER_LOGOUT } from '../constants/authConstants'
 
 export const registerReducer = (state={},action) => {
     switch(action.type){
@@ -37,6 +37,8 @@ export const loginReducer = (state={},action) => {
                 loading:false,
                 error:action.payload
             }
+        case USER_LOGOUT:
+            return { }
         default:
             return state
         }

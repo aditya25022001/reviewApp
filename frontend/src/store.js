@@ -11,6 +11,7 @@ const reducer = combineReducers({
 const userInfoFromStorage = sessionStorage.getItem('userInfo') ? JSON.parse(sessionStorage.getItem('userInfo')) : null
 
 const initialState = {
+
     //lhs must be a name of a reducer in store
     userLogin : { userInfo : userInfoFromStorage }
 }

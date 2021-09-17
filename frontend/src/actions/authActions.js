@@ -1,4 +1,4 @@
-import { USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAIL } from '../constants/authConstants'
+import { USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAIL, USER_LOGOUT } from '../constants/authConstants'
 import axios from 'axios'
 
 export const userRegisterAction = (name, email, number, password) => async (dispatch) => {
@@ -16,6 +16,10 @@ export const userRegisterAction = (name, email, number, password) => async (disp
             type:USER_REGISTER_SUCCESS,
             payload:data
         })        
+        dispatch({
+            type:USER_LOGIN_SUCCESS,
+            payload:data
+        }) 
         sessionStorage.setItem("userInfo",JSON.stringify(data))
     } catch (error) {
         dispatch({
@@ -47,4 +51,9 @@ export const userLoginAction = (email, password) => async (dispatch) => {
             payload:error.response && error.response.data.message ? error.response.data.message : error.message
         })
     }
+}
+
+export const userLogoutAction = () => async(dispatch)=>{
+    sessionStorage.removeItem('userInfo')
+    dispatch({ type:USER_LOGOUT })
 }

@@ -1,0 +1,36 @@
+import nodemailer from 'nodemailer'
+import hbs from 'nodemailer-express-handlebars'
+import path from 'path'
+import dotenv from 'dotenv'
+
+dotenv.config()
+
+const EMAIL = process.env.EMAIL
+const PASSWORD = process.env.PASSWORD
+const __dirname = path.resolve()
+const transporter = nodemailer.createTransport({service:"gmail", auth:{user:EMAIL, pass:PASSWORD}})
+transporter.use('compile',hbs({viewEngine:'nodemailer-express-handlebars',viewPath:path.join(__dirname,'/backend/templates')}))
+
+const welcomeEmail = (name, email) => {
+    const mailOptions = {
+        from:EMAIL,
+        to:email,
+        subject:'Welcome Email',
+        template:'welcomeEmail',
+        context:{
+            name:name
+        }
+    }
+    transporter.sendMail(mailOptions,(err,info) => {
+        if(err){
+            console.log(err.message)
+            return 'Error sending email'
+        }
+        else{
+            console.log(info.response)
+            return 'Email Sent'
+        }
+    })
+}
+
+export { welcomeEmail }

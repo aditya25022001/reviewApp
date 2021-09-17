@@ -74,10 +74,19 @@ export const RegisterScreen = ({ location, history }) => {
         }
         return /[a-z]/g.test(password) && /[A-Z]/g.test(password) && /[0-9]/g.test(password) && /[~!@#$%^&*]/g.test(password) && password.length>8 && password===confirmPassword
     }
+    
+    const checkSanitation = () => {
+        if(!terms){
+            setUserError("Please check the box")
+            setOpen(true)  
+            return false          
+        }
+        return true
+    }
 
     const registerHandler = (e) => {
         e.preventDefault()
-        if(emailSanitation() && numberSanitation() && passwordSanitation()){
+        if(emailSanitation() && numberSanitation() && passwordSanitation() && checkSanitation()){
             dispatch(userRegisterAction(name, email, number, password))
         }
         else{
@@ -106,7 +115,7 @@ export const RegisterScreen = ({ location, history }) => {
             <Form onSubmit={registerHandler} className='p-4 rounded mx-auto form_component'>
                 <div className='mb-4 w-100 pl-1 py-1 form_header'>Sign Up</div>
                 <Form.Group className='mb-3' >
-                    <TextField autoFocus={true} label="Name" required variant="outlined" value={name} onChange={e => setName(e.target.value)} type="text" />
+                    <TextField autoFocus label="Name" required variant="outlined" value={name} onChange={e => setName(e.target.value)} type="text" />
                 </Form.Group>
                 <Form.Group className='mb-3' >
                     <TextField label="Email" required inputMode='email' type='email' variant="outlined" value={email} onChange={e => setEmail(e.target.value)} />
@@ -139,6 +148,7 @@ export const RegisterScreen = ({ location, history }) => {
                 <Button variant='contained' type="submit" style={{ color:'white', backgroundColor:'black' }} className='border-0 w-100 py-3 mx-auto'>
                     Register
                 </Button>
+                <div className='mx-auto text-center mt-3'>Already a member? <Link to="/login" style={{ textDecoration:"underline", cursor:'pointer', color:'black' }}>Sign in</Link> instead</div>
             </Form>   
         </div>
     )
