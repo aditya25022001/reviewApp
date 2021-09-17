@@ -26,15 +26,63 @@ export const RegisterScreen = ({ location, history }) => {
 
     const dispatch = useDispatch()
     
-    const register = useSelector(state => state.register)
-    const { loading, error, userInfo } = register
+    const userRegister = useSelector(state => state.userRegister)
+    const { loading, error, userInfo } = userRegister
     
     const redirect = location.search ? location.search.split('=')[1] : '/'
 
+    const emailSanitation = () => {
+        return /[@]/g.test(email) && /[.]/g.test(email)
+    }
+
+    const numberSanitation = () => {
+        if(!/[^a-z]/g.test(number) || !/[^A-Z]/g.test(number)){
+            setUserError("Number cannot have alphabets")
+            setOpen(true)
+        }
+        if(!/[^~!@#$%^&*]/g.test(number)){
+            setUserError("Number cannot have special characters")
+            setOpen(true)
+        }
+        return /[^a-z]/g.test(number) && /[^A-Z]/g.test(number) && /[0-9]/g.test(number) && /[^~!@#$%^&*]/g.test(number) && number.length===10                
+    }
+    
+    const passwordSanitation = () => {
+        if(!/[a-z]/g.test(password)){
+            setUserError("Password must have atleast one lower case alphabet")
+            setOpen(true)
+        }
+        if(!/[A-Z]/g.test(password)){
+            setUserError("Password must have atleast one upper case alphabet")
+            setOpen(true)
+        }
+        if(!/[!@#$%^&*]/g.test(password)){
+            setUserError("Password must have atleast one special character")
+            setOpen(true)
+        }
+        if(!/[0-9]/g.test(password)){
+            setUserError("Password must have atleast one number")
+            setOpen(true)
+        }
+        if(password.length<8){
+            setUserError("Password must be atleast 8 characters")
+            setOpen(true)    
+        }
+        if(password!==confirmPassword){
+            setUserError("Passwords do not match")
+            setOpen(true)    
+        }
+        return /[a-z]/g.test(password) && /[A-Z]/g.test(password) && /[0-9]/g.test(password) && /[~!@#$%^&*]/g.test(password) && password.length>8 && password===confirmPassword
+    }
+
     const registerHandler = (e) => {
         e.preventDefault()
-        console.log({name,email,password,number,terms})
-        dispatch(userRegisterAction(name, email, number, password))
+        if(emailSanitation() && numberSanitation() && passwordSanitation()){
+            dispatch(userRegisterAction(name, email, number, password))
+        }
+        else{
+
+        }
     }
 
     if(open){
@@ -61,10 +109,10 @@ export const RegisterScreen = ({ location, history }) => {
                     <TextField autoFocus={true} label="Name" required variant="outlined" value={name} onChange={e => setName(e.target.value)} type="text" />
                 </Form.Group>
                 <Form.Group className='mb-3' >
-                    <TextField label="Email" required inputmode='email' type='email' variant="outlined" value={email} onChange={e => setEmail(e.target.value)} />
+                    <TextField label="Email" required inputMode='email' type='email' variant="outlined" value={email} onChange={e => setEmail(e.target.value)} />
                 </Form.Group>
                 <Form.Group className='mb-3' >
-                    <TextField label="Phone" required inputmode='tel' inputProps={{maxLength:10}} type='tel' variant="outlined" value={number} onChange={e => setNumber(e.target.value)} />
+                    <TextField label="Phone" required inputMode='tel' inputProps={{maxLength:10, minLength:10}} type='tel' variant="outlined" value={number} onChange={e => setNumber(e.target.value)} />
                 </Form.Group>
                 <Form.Group className='mb-3' >
                     <div className='d-flex'>

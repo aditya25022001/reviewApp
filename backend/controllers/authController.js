@@ -1,4 +1,5 @@
 import asyncHandler from 'express-async-handler'
+import generateToken from '../utils/generateToken.js'
 import User from '../models/userModel.js'
 
 const register = asyncHandler(async (req,res) => {
@@ -11,7 +12,18 @@ const register = asyncHandler(async (req,res) => {
         name, email, password, number, points:0, reviews:[]
     })
     if(user){
-        res.status(201).json({ message:"User created" })
+        res.status(201).json({
+            _id:user._id,
+            name:user.name,
+            email:user.email,
+            number:user.number,
+            points:user.points,
+            reviews:user.reviews,
+            token: generateToken(user._id),
+        })
+    }
+    else{
+        res.status(400).json({ message:"Invalid user data" })
     }
 })
 
