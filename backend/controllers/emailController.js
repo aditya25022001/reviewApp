@@ -23,14 +23,37 @@ const welcomeEmail = (name, email) => {
     }
     transporter.sendMail(mailOptions,(err,info) => {
         if(err){
-            console.log(err.message)
+            process.env.NODE_ENV !== 'production' && console.log(err.message)
             return 'Error sending email'
         }
         else{
-            console.log(info.response)
+            process.env.NODE_ENV !== 'production' && console.log(info.response)
             return 'Email Sent'
         }
     })
 }
 
-export { welcomeEmail }
+const sendOtpEmail = (name, email, otp) => {
+    const mailOptions = {
+        from:EMAIL,
+        to:email,
+        subject:'OTP | Forgot Password',
+        template:'forgotPasswordEmail',
+        context:{
+            otp:otp,
+            name:name
+        }
+    }
+    transporter.sendMail(mailOptions,(err,info) => {
+        if(err){
+            process.env.NODE_ENV !== 'production' && console.log(err.message)
+            return 'Error sending email'
+        }
+        else{
+            process.env.NODE_ENV !== 'production' && console.log(info.response)
+            return 'Email Sent'
+        }
+    })
+}
+
+export { welcomeEmail, sendOtpEmail }

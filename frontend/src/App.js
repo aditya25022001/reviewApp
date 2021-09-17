@@ -3,12 +3,18 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { HomeScreen } from './screens/HomeScreen'
 import { RegisterScreen } from './screens/RegisterScreen'
 import { LoginScreen } from './screens/LoginScreen'
+import { ForgotPasswordScreen } from './screens/ForgotPasswordScreen';
+import { EnterOtpScreen } from './screens/EnterOtpScreen';
+import { ResetPasswordScreen } from './screens/ResetPasswordScreen';
 
 function App() {
   return (
       <Router>
         <Route path='/register' component={RegisterScreen} exact />
         <Route path='/login' component={LoginScreen} exact />
+        <Route path='/forgot' component={ForgotPasswordScreen} exact />
+        <Route path='/forgot/otp' component={EnterOtpScreen} exact />
+        <Route path='/forgot/reset/:id' component={ResetPasswordScreen} exact />
         <Route path='/' component={HomeScreen} exact />
       </Router>
   );

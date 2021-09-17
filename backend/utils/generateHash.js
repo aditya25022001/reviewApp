@@ -1,5 +1,7 @@
 import bcrypt from 'bcryptjs'
 
-export const generateHash = (otp) => {
+const generateHash = (otp) => {
     return bcrypt.hashSync(otp,10)
 }
+
+export default generateHash

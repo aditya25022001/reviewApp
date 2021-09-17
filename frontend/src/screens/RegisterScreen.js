@@ -102,7 +102,7 @@ export const RegisterScreen = ({ location, history }) => {
     }
 
     useEffect(()=>{
-        if(userInfo){
+        if(userInfo || sessionStorage.getItem('userInfo')){
             history.push(redirect)
         }
     },[history, userInfo, redirect])
