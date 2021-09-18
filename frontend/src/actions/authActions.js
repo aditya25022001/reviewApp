@@ -1,4 +1,5 @@
 import { USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAIL, USER_LOGOUT, FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS, FORGOT_PASSWORD_FAIL, FORGOT_PASSWORD_RESET, RESET_PASSWORD_REQUEST, RESET_PASSWORD_SUCCESS, RESET_PASSWORD_FAIL, RESET_PASSWORD_RESET } from '../constants/authConstants'
+import { VIEW_PROFILE_RESET, UPDATE_PROFILE_RESET } from '../constants/profileConstants'
 import axios from 'axios'
 
 export const userRegisterAction = (name, email, number, password) => async (dispatch) => {
@@ -58,6 +59,8 @@ export const userLogoutAction = () => async(dispatch)=>{
     sessionStorage.removeItem('userInfo')
     dispatch({ type:USER_LOGOUT })
     dispatch({ type:FORGOT_PASSWORD_RESET })
+    dispatch({ type:VIEW_PROFILE_RESET })
+    dispatch({ type:UPDATE_PROFILE_RESET })
 }
 
 export const userRequestOtpAction = (email) => async(dispatch)=>{
