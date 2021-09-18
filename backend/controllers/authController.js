@@ -80,7 +80,7 @@ const sendOtp = asyncHandler(async (req,res) => {
     }
 })
 
-//route       PUT/api/auth/sendOtp
+//route       PUT/api/auth/reset/:id
 //access      public
 //desc        reseting password for user
 const resetPassword = asyncHandler(async (req,res) => {
@@ -97,6 +97,7 @@ const resetPassword = asyncHandler(async (req,res) => {
         res.json({
             _id:updatedUser._id,
             email: updatedUser.email,
+            message:"Password Reset Successful"
         })
     }
     else{
