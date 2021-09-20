@@ -1,5 +1,6 @@
 *{
   margin: 0 !important;
+  font-family: 'Roboto' , 'Helvetica' ,' Arial' , 'sans-serif' !important;
 }
 *::selection{
   color: white !important;
@@ -40,12 +41,12 @@
 }
 .form_component{
   width:35%;
-  margin-top:5% !important;
+  margin-top:7% !important;
   background-color:white !important;
   border:0.5px solid rgb(153, 153, 153);
 }
 .form_header{
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size:1.8rem;
 }
 .form-control:focus{
@@ -76,15 +77,46 @@ input[type="file"]{
   background-color:rgb(83, 83, 83) !important;
   cursor: not-allowed !important; 
 }
+@keyframes wave {
+  0% {transform:rotateZ(13deg);}
+  50% {transform:rotateZ(0deg);}
+  100% {transform:rotateZ(13deg);}
+}
+.wave{
+  animation: wave 1s infinite;
+}
+.form_component_contact{
+  width:35%;
+  margin-top:7% !important;
+  background-color:white !important;
+}
+.nav-link{
+  color:rgb(122, 122, 122) !important;
+}
+.nav-link:hover{
+  color: rgb(58, 58, 58) !important;
+}
+#active{
+  color:black !important;
+}
 @media screen and (max-width:1009px) and (min-width:522px){
   .form_component{
     width:80%;
-    margin-top:10% !important;
+    margin-top:15% !important;
+  }
+  .form_component_contact{
+    width:80%;
+    margin-top: 17% !important;
   }
 }
 @media screen and (max-width:522px){
   .form_component{
     width:90%;
+    margin-top:19% !important;
+  }
+  .form_component_contact{
+    width:90%;
+    margin-top: 19% !important;
   }
 }
 

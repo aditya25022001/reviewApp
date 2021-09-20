@@ -8,10 +8,12 @@ export const getProfileAction = () => async(dispatch, getState) => {
         })
         const { userLogin : { userInfo } } = getState()
         const config = {
-            'Content-Type':'application/json',
-            'Authorization':`Bearer ${userInfo.token}`
+            headers:{
+                'Content-Type':'application/json',
+                'Authorization':`Bearer ${userInfo.token}`
+            }
         }
-        const { data } = await axios.get('/api/user/profile',config)
+        const { data } = await axios.get('/api/profile',config)
         dispatch({
             type:VIEW_PROFILE_SUCCESS,
             payload:data
@@ -31,10 +33,12 @@ export const updateUserProfile = (user) => async(dispatch, getState) => {
         })
         const { userLogin : { userInfo } } = getState()
         const config = {
-            'Content-Type':'application/json',
-            'Authorization':`Bearer ${userInfo.token}`
+            headers:{
+                'Content-Type':'application/json',
+                'Authorization':`Bearer ${userInfo.token}`
+            }
         }
-        const { data } = await axios.put('/api/user/profile/update', user, config)
+        const { data } = await axios.put('/api/profile/update', user, config)
         dispatch({
             type:UPDATE_PROFILE_SUCCESS,
             payload:data

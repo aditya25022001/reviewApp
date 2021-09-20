@@ -1,13 +1,11 @@
 import asyncHandler from 'express-async-handler'
 import User from '../models/userModel.js'
-import generateToken from '../utils/generateToken.js'
 
-//route       GET/api/user/profile
+//route       GET/api/profile
 //access      private
 //desc        show user profile 
 const getProfile = asyncHandler(async (req,res) => {
-    const id = req.params.id
-    const user = await User.findById(id)
+    const user = await User.findById(req.user._id)
     if(user){
         res.status(200).json({
             _id: user._id,
@@ -23,11 +21,33 @@ const getProfile = asyncHandler(async (req,res) => {
     }
 })
 
-//route       PUT/api/user/profile/update
+//route       PUT/api/profile/update
 //access      private
 //desc        update user profile 
 const updateUserProfile = asyncHandler(async (req,res) => {
-
+    const { name, number, email } = req.body
+    const id = req.user._id
+    const user = await User.findById(id)
+    if(user){
+        user.name = name || user.name
+        user.points = user.points
+        user.reviews = user.reviews
+        user.email = email || user.email
+        user.number = number || user.number
+        user.password = user.password
+        const updatedUser = await user.save()
+        res.json({
+            _id:updatedUser._id,
+            name: updatedUser.name, 
+            email:updatedUser.email,
+            number: updatedUser.number,
+            points: updatedUser.points,
+            reviews: updatedUser.reviews
+        })
+    }
+    else{
+        res.status(404).json({ message:"User not found" })
+    }
 })
 
 export { getProfile, updateUserProfile }
