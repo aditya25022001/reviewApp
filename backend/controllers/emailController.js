@@ -11,16 +11,7 @@ const __dirname = path.resolve()
 const transporter = nodemailer.createTransport({service:"gmail", auth:{user:EMAIL, pass:PASSWORD}})
 transporter.use('compile',hbs({viewEngine:'nodemailer-express-handlebars',viewPath:path.join(__dirname,'/backend/templates')}))
 
-const welcomeEmail = (name, email) => {
-    const mailOptions = {
-        from:EMAIL,
-        to:email,
-        subject:'Welcome Email',
-        template:'welcomeEmail',
-        context:{
-            name:name
-        }
-    }
+const sendMail = (mailOptions) => {
     transporter.sendMail(mailOptions,(err,info) => {
         if(err){
             process.env.NODE_ENV !== 'production' && console.log(err.message)
@@ -31,6 +22,19 @@ const welcomeEmail = (name, email) => {
             return 'Email Sent'
         }
     })
+}
+
+const welcomeEmail = (name, email) => {
+    const mailOptions = {
+        from:EMAIL,
+        to:email,
+        subject:'Welcome Email',
+        template:'welcomeEmail',
+        context:{
+            name:name
+        }
+    }
+    sendMail(mailOptions)
 }
 
 const sendOtpEmail = (name, email, otp) => {
@@ -44,16 +48,19 @@ const sendOtpEmail = (name, email, otp) => {
             name:name
         }
     }
-    transporter.sendMail(mailOptions,(err,info) => {
-        if(err){
-            process.env.NODE_ENV !== 'production' && console.log(err.message)
-            return 'Error sending email'
-        }
-        else{
-            process.env.NODE_ENV !== 'production' && console.log(info.response)
-            return 'Email Sent'
-        }
-    })
+    sendMail(mailOptions)
 }
 
-export { welcomeEmail, sendOtpEmail }
+const sendLoginWarningEmail = (name, email) => {
+    const mailOptions = {
+        from:EMAIL,
+        to:email,
+        subject:'Suspicious Signin',
+        template:'warningLoginEmail',
+        context:{
+            name:name,
+        }
+    }
+    sendMail(mailOptions)
+}
+export { welcomeEmail, sendOtpEmail, sendLoginWarningEmail }

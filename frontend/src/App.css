@@ -99,6 +99,16 @@ input[type="file"]{
 #active{
   color:black !important;
 }
+.entity_card{
+  width:32.3%;
+  cursor:pointer;
+  box-shadow: 1px 0px 8px 1px rgb(241, 241, 241);
+  transition-duration:1s;
+}
+.entity_card:hover{
+  transform:scale(1.02);
+  transition-duration:0.5s;
+}
 @media screen and (max-width:1009px) and (min-width:522px){
   .form_component{
     width:80%;
@@ -110,6 +120,9 @@ input[type="file"]{
   }
 }
 @media screen and (max-width:522px){
+  .entity_card{
+    width:90%;
+  }
   .form_component{
     width:90%;
     margin-top:19% !important;

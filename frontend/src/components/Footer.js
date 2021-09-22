@@ -6,10 +6,10 @@ import 'aos/dist/aos.css'
 
 export const Footer = () => {
     useEffect(()=>{
-        Aos.init({  })
+        Aos.init({ once:true })
     },[])
     return (
-        <Navbar data-aos='fade-up' className='mt-5' expand="lg" bg="light" variant="light" fixed='bottom'>
+        <Navbar data-aos='fade-up' expand="lg" bg="light" variant="light" fixed='bottom'>
             <div className='mx-auto' style={{ fontSize:'0.8rem', fontWeight:'bold' }}><FavoriteIcon style={{ color:'red', fontSize:'1rem' }}/>CS(A) IET'23</div>
         </Navbar>
     )

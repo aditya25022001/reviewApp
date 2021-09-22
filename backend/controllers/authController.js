@@ -3,7 +3,7 @@ import generateToken from '../utils/generateToken.js'
 import generateHash from '../utils/generateToken.js'
 import User from '../models/userModel.js'
 import { v4 } from 'uuid'
-import { welcomeEmail, sendOtpEmail } from './emailController.js'
+import { welcomeEmail, sendOtpEmail, sendLoginWarningEmail } from './emailController.js'
 
 //route       POST/api/auth/register
 //access      public
@@ -55,6 +55,7 @@ const login = asyncHandler(async(req,res) => {
             })
         }
         else{
+            sendLoginWarningEmail(user.name, email)
             res.status(401).json({ message:"Bad Credentials" })
         }
     }
