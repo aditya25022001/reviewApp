@@ -26,6 +26,7 @@ const register = asyncHandler(async (req,res) => {
             number:user.number,
             points:user.points,
             reviews:user.reviews,
+            isAdmin:user.isAdmin,
             token: generateToken(user._id),
         })
     }
@@ -51,7 +52,8 @@ const login = asyncHandler(async(req,res) => {
                 email:user.email,
                 points:user.points,
                 reviews:user.reviews,
-                token: generateToken(user._id)
+                token: generateToken(user._id),
+                isAdmin:user.isAdmin,
             })
         }
         else{

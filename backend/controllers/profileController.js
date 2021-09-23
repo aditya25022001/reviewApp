@@ -13,7 +13,8 @@ const getProfile = asyncHandler(async (req,res) => {
             email:user.email,
             points: user.points,
             reviews: user.reviews,
-            number: user.number
+            number: user.number,
+            isAdmin:user.isAdmin,
         })
     }
     else{
@@ -35,6 +36,7 @@ const updateUserProfile = asyncHandler(async (req,res) => {
         user.email = email || user.email
         user.number = number || user.number
         user.password = user.password
+        user.isAdmin = user.isAdmin
         const updatedUser = await user.save()
         res.json({
             _id:updatedUser._id,
@@ -42,7 +44,8 @@ const updateUserProfile = asyncHandler(async (req,res) => {
             email:updatedUser.email,
             number: updatedUser.number,
             points: updatedUser.points,
-            reviews: updatedUser.reviews
+            reviews: updatedUser.reviews,
+            isAdmin:updatedUser.isAdmin,
         })
     }
     else{

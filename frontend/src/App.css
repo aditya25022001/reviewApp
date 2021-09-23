@@ -99,6 +99,13 @@ input[type="file"]{
 #active{
   color:black !important;
 }
+#disabled_entity{
+  opacity:0.6;
+  cursor:not-allowed;
+}
+#disabled_entity:hover{
+  transform:scale(1) !important; 
+}
 .entity_card{
   width:32.3%;
   cursor:pointer;

@@ -4,19 +4,22 @@ const users = [
     {
         name:"Aditya Ubale",
         email:"adityaubale63@gmail.com",
-        password : bcrypt.hashSync('123456', 10),
+        password : bcrypt.hashSync('AdityaUbale01@#', 10),
+        isAdmin:true,
         number:"8770471714"
     },
     {
         name:"Vasudha Ubale",
         email:"adityaubale73@gmail.com",
-        password : bcrypt.hashSync('123456', 10),
+        password : bcrypt.hashSync('AdityaUbale01@#', 10),
+        isAdmin:false,
         number:"7000590765"
     },
     {
         name:"Arpita Ubale",
         email:"arpitaubale63@gmail.com",
-        password : bcrypt.hashSync('123456', 10),
+        password : bcrypt.hashSync('AdityaUbale01@#', 10),
+        isAdmin:false,
         number:"8319417371"
     }
 ]
