@@ -1,29 +1,20 @@
 import mongoose from 'mongoose'
-
-const movieSchema = mongoose.Schema({
+const ytSchema = mongoose.Schema({
     name:{
         type:String,
         required:true,
         unique:true,
     },
-    genre:{
+    description:{
         type:String,
         required:true,
     },
-    description:{
+    subscribers:{
         type:String,
         required:true
     },
-    cast:[{
+    category:{
         type:String,
-        required:true
-    }],
-    availableOn:{
-        type:String,
-        required:true
-    },
-    releaseDate:{
-        type:Date,
         required:true
     },
     reviews:[{
@@ -34,9 +25,10 @@ const movieSchema = mongoose.Schema({
         type:mongoose.SchemaTypes.ObjectId,
         ref:'User'
     }]
+
 },{
-    timestamps:true
+  timestamps:true
 })
 
-const Movie = mongoose.model('Movie',movieSchema)
-export default Movie
+const Youtube = mongoose.model('Youtube',ytSchema)
+export default Youtube

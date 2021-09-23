@@ -1,29 +1,25 @@
 import mongoose from 'mongoose'
 
-const movieSchema = mongoose.Schema({
+const appSchema = mongoose.Schema({
     name:{
         type:String,
         required:true,
-        unique:true,
-    },
-    genre:{
-        type:String,
-        required:true,
+        unique:true
     },
     description:{
         type:String,
-        required:true
+        required:true,
     },
-    cast:[{
-        type:String,
-        required:true
-    }],
-    availableOn:{
-        type:String,
-        required:true
-    },
-    releaseDate:{
+    launch:{
         type:Date,
+        required:true
+    },
+    category:{
+        type:String,
+        required:true
+    },
+    size:{
+        type:String,
         required:true
     },
     reviews:[{
@@ -34,9 +30,10 @@ const movieSchema = mongoose.Schema({
         type:mongoose.SchemaTypes.ObjectId,
         ref:'User'
     }]
+
 },{
-    timestamps:true
+  timestamps:true
 })
 
-const Movie = mongoose.model('Movie',movieSchema)
-export default Movie
+const Application = mongoose.model('Application',appSchema)
+export default Application

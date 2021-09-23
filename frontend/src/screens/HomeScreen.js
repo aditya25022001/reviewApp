@@ -5,7 +5,6 @@ import MovieCreationIcon from '@material-ui/icons/MovieCreation';
 import TwoWheelerIcon from '@material-ui/icons/TwoWheeler';
 import DevicesOtherIcon from '@material-ui/icons/DevicesOther';
 import PlaceIcon from '@material-ui/icons/Place';
-import BusinessIcon from '@material-ui/icons/Business';
 import AndroidIcon from '@material-ui/icons/Android';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import LanguageIcon from '@material-ui/icons/Language';
@@ -40,11 +39,6 @@ export const HomeScreen = () => {
             to:'/places'
         },
         {
-            name:'Institutions',
-            image:<BusinessIcon/>,
-            to:'/institutions'
-        },
-        {
             name:'Applications',
             image:<AndroidIcon/>,
             to:'/applications'
@@ -62,7 +56,7 @@ export const HomeScreen = () => {
     ]
 
     return (
-        <div style={{ padding:'5rem 0rem 3rem 0rem' }} className='mx-auto'>
+        <div style={{ padding:'5rem 0.5rem 3rem 0.5rem' }} className='mx-auto'>
             <div style={{ display:'flex', flexWrap:'wrap' }}>
                 {entities.map(each => (
                     <Entity key={each} name={each.name} image={each.image} to={each.to} />
