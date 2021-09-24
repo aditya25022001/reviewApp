@@ -6,16 +6,16 @@ const autoSchema = mongoose.Schema({
         required: true,
         unique: true,
     },
-    launch:{
-        type:Date,
-        required:true
+    image:{
+        type: String,
+        required: true,
     },
     description:{
         type: String,
         required:true
     },
     price:{
-        type:Number,
+        type:String,
         required:true
     },
     company:{

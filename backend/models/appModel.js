@@ -10,8 +10,12 @@ const appSchema = mongoose.Schema({
         type:String,
         required:true,
     },
+    logo:{
+        type:String,
+        required:true
+    },
     launch:{
-        type:Date,
+        type:String,
         required:true
     },
     category:{

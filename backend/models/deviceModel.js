@@ -15,11 +15,11 @@ const deviceSchema = mongoose.Schema({
         required:true,
     },
     launchDate:{
-        type:Date,
+        type:String,
         required:true
     },
     price:{
-        type:Number,
+        type:String,
         required:true
     },
     reviews:[{

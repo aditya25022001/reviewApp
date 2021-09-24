@@ -6,10 +6,14 @@ const movieSchema = mongoose.Schema({
         required:true,
         unique:true,
     },
-    genre:{
+    image:{
+        type:String,
+        required:true
+    },
+    genre:[{
         type:String,
         required:true,
-    },
+    }],
     description:{
         type:String,
         required:true
@@ -23,7 +27,7 @@ const movieSchema = mongoose.Schema({
         required:true
     },
     releaseDate:{
-        type:Date,
+        type:String,
         required:true
     },
     reviews:[{

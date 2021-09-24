@@ -6,6 +6,14 @@ const cafeSchema = mongoose.Schema({
         required:true,
         unique:true
     },
+    phone:{
+        type:Number,
+        required:false
+    },
+    image:{
+        type:String,
+        required:true,
+    },
     description:{
         type:String,
         required:true,
