@@ -3,6 +3,7 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { registerReducer, loginReducer, sendOtpReducer, resetPasswordreducer } from './reducers/authReducers'
 import { getUserProfileReducer, updateUserProfileReducer } from './reducers/profileReducers'
+import { getMoviesReducer } from './reducers/movieReducers'
 
 const reducer = combineReducers({
 
@@ -12,7 +13,9 @@ const reducer = combineReducers({
     userResetPassword:resetPasswordreducer,
 
     userProfile : getUserProfileReducer,
-    userUpdate : updateUserProfileReducer
+    userUpdate : updateUserProfileReducer,
+
+    userGetMovies:getMoviesReducer
 })
 
 const userInfoFromStorage = sessionStorage.getItem('userInfo') ? JSON.parse(sessionStorage.getItem('userInfo')) : null

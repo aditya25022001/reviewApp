@@ -12,6 +12,7 @@ import { EnterOtpScreen } from './screens/EnterOtpScreen';
 import { ResetPasswordScreen } from './screens/ResetPasswordScreen';
 import { ContactScreen } from './screens/ContactScreen'
 import { ProfileScreen } from './screens/ProfileScreen'
+import { MovieScreen } from './screens/MovieScreen'
 
 function App() {
   const userLogin = useSelector(state => state.userLogin)
@@ -24,6 +25,7 @@ function App() {
         <Route path='/forgot' component={ForgotPasswordScreen} exact />
         <Route path='/contact' component={ContactScreen} exact />
         <Route path='/profile' component={ProfileScreen} exact />
+        <Route path='/movies' component={MovieScreen} exact />
         <Route path='/forgot/otp' component={EnterOtpScreen} exact />
         <Route path='/forgot/reset/:id' component={ResetPasswordScreen} exact />
         <Route path='/' component={HomeScreen} exact />
