@@ -12,7 +12,7 @@ export const Header = () => {
     const location = useLocation().pathname
     return (
         <Navbar fixed='top' className='border-bottom' collapseOnSelect expand="lg" bg="light" variant="light">
-        <Navbar.Brand href="/" style={{ fontSize:'1.4rem' }}>Review</Navbar.Brand>
+        <Navbar.Brand href="/" style={{ fontSize:'1.4rem' }}>ReviewApp</Navbar.Brand>
         <Navbar.Toggle className='border-0' aria-controls="responsive-navbar-nav">
             <span className='border-0'>
                 <MenuOpenIcon style={{ color:'black', fontSize:'1.6rem' }}/>

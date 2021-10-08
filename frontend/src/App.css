@@ -112,7 +112,7 @@ input[type="file"]{
   box-shadow: 1px 0px 8px 1px rgb(241, 241, 241);
   transition-duration:1s;
 }
-.entity_card:hover{
+.entity_card:hover, .movie_card:hover {
   transform:scale(1.02);
   transition-duration:0.5s;
 }
