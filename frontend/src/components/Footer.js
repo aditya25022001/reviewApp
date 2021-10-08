@@ -6,7 +6,7 @@ import 'aos/dist/aos.css'
 
 export const Footer = () => {
     useEffect(()=>{
-        Aos.init({ once:true })
+        Aos.init({  })
     },[])
     return (
         <Navbar data-aos='fade-up' expand="lg" bg="light" variant="light" fixed='bottom'>

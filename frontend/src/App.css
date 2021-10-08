@@ -106,7 +106,7 @@ input[type="file"]{
 #disabled_entity:hover{
   transform:scale(1) !important; 
 }
-.entity_card{
+.entity_card, .movie_card{
   width:32.3%;
   cursor:pointer;
   box-shadow: 1px 0px 8px 1px rgb(241, 241, 241);
@@ -127,7 +127,7 @@ input[type="file"]{
   }
 }
 @media screen and (max-width:522px){
-  .entity_card{
+  .entity_card, .movie_card{
     width:90%;
   }
   .form_component{

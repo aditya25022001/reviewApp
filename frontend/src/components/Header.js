@@ -10,7 +10,6 @@ export const Header = () => {
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
     const location = useLocation().pathname
-    console.log(location)
     return (
         <Navbar fixed='top' className='border-bottom' collapseOnSelect expand="lg" bg="light" variant="light">
         <Navbar.Brand href="/" style={{ fontSize:'1.4rem' }}>Review</Navbar.Brand>
@@ -21,13 +20,13 @@ export const Header = () => {
         </Navbar.Toggle>
         <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ml-auto">
-                <Nav.Link href="/" style={{ fontSize:'1.05rem' }} className={typeof window!==undefined && window.innerWidth>990 && 'mx-3'} id={location==='/' && "active"}>Home</Nav.Link>
-                <Nav.Link href="/about" style={{ fontSize:'1.05rem' }} className={typeof window!==undefined && window.innerWidth>990 && 'mx-3'} id={location==='/about' && "active"}>About</Nav.Link>
-                <Nav.Link href="/features" style={{ fontSize:'1.05rem' }} className={typeof window!==undefined && window.innerWidth>990 && 'mx-3'} id={location==='/features' && "active"}>Features</Nav.Link>
-                <Nav.Link href="/contact" style={{ fontSize:'1.05rem' }} className={typeof window!==undefined && window.innerWidth>990 && 'mx-3'} id={location==='/contact' && "active"}>Contact</Nav.Link>
+                <Nav.Link href="/" style={{ fontSize:'1.05rem' }} className={typeof window!==undefined && window.innerWidth>990 && 'mx-3'} id={location==='/' ? "active" : ""}>Home</Nav.Link>
+                <Nav.Link href="/about" style={{ fontSize:'1.05rem' }} className={typeof window!==undefined && window.innerWidth>990 && 'mx-3'} id={location==='/about' ? "active" : ""}>About</Nav.Link>
+                <Nav.Link href="/features" style={{ fontSize:'1.05rem' }} className={typeof window!==undefined && window.innerWidth>990 && 'mx-3'} id={location==='/features' ? "active" : ""}>Features</Nav.Link>
+                <Nav.Link href="/contact" style={{ fontSize:'1.05rem' }} className={typeof window!==undefined && window.innerWidth>990 && 'mx-3'} id={location==='/contact' ? "active" : ""}>Contact</Nav.Link>
                 {userInfo 
-                ? <Nav.Link href="/profile" style={{ fontSize:'1.05rem' }} className={typeof window!==undefined && window.innerWidth>990 && 'mx-3'} id={location==='/profile' && "active"}>Profile</Nav.Link>
-                : <Nav.Link href="/register" style={{ fontSize:'1.05rem' }} className={typeof window!==undefined && window.innerWidth>990 && 'mx-3'} id={(location==='/register' || location==='/login') && "active"}>Sign Up</Nav.Link>
+                ? <Nav.Link href="/profile" style={{ fontSize:'1.05rem' }} className={typeof window!==undefined && window.innerWidth>990 && 'mx-3'} id={location==='/profile' ? "active" : ""}>Profile</Nav.Link>
+                : <Nav.Link href="/register" style={{ fontSize:'1.05rem' }} className={typeof window!==undefined && window.innerWidth>990 && 'mx-3'} id={(location==='/register' || location==='/login') ? "active" : ""}>Sign Up</Nav.Link>
                 }
                 <Tooltip title="view source" placement="bottom">
                     <Nav.Link href='https://github.com/aditya25022001/reviewApp' target="_blank" rel="noopener noreferrer">
