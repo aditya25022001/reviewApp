@@ -21,7 +21,7 @@ const entities = [
     {
         name:'Restaurants & Cafe', 
         image:<FreeBreakfastIcon/>,
-        to:'/restaurants'
+        to:'/cafes'
     },
     {
         name:'Devices', 

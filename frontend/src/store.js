@@ -4,6 +4,8 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import { registerReducer, loginReducer, sendOtpReducer, resetPasswordreducer } from './reducers/authReducers'
 import { getUserProfileReducer, updateUserProfileReducer } from './reducers/profileReducers'
 import { getMoviesReducer } from './reducers/movieReducers'
+import { getAutomobilesReducer } from './reducers/autoReducers'
+import { getCafesReducer } from './reducers/cafeReducers'
 
 const reducer = combineReducers({
 
@@ -15,7 +17,11 @@ const reducer = combineReducers({
     userProfile : getUserProfileReducer,
     userUpdate : updateUserProfileReducer,
 
-    userGetMovies:getMoviesReducer
+    userGetMovies:getMoviesReducer,
+
+    userGetAutomobiles : getAutomobilesReducer,
+
+    userGetCafes : getCafesReducer,
 })
 
 const userInfoFromStorage = sessionStorage.getItem('userInfo') ? JSON.parse(sessionStorage.getItem('userInfo')) : null

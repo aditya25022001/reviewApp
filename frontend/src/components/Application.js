@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const DeviceScreen = () => {
+export const Application = () => {
     return (
         <div>
             

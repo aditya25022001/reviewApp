@@ -13,6 +13,8 @@ import { ResetPasswordScreen } from './screens/ResetPasswordScreen';
 import { ContactScreen } from './screens/ContactScreen'
 import { ProfileScreen } from './screens/ProfileScreen'
 import { MovieScreen } from './screens/MovieScreen'
+import { AutomobileScreen } from './screens/AutomobileScreen'
+import { CafeScreen } from './screens/CafeScreen'
 
 function App() {
   const userLogin = useSelector(state => state.userLogin)
@@ -26,6 +28,8 @@ function App() {
         <Route path='/contact' component={ContactScreen} exact />
         <Route path='/profile' component={ProfileScreen} exact />
         <Route path='/movies' component={MovieScreen} exact />
+        <Route path='/automobiles' component={AutomobileScreen} exact />
+        <Route path='/cafes' component={CafeScreen} exact />
         <Route path='/forgot/otp' component={EnterOtpScreen} exact />
         <Route path='/forgot/reset/:id' component={ResetPasswordScreen} exact />
         <Route path='/' component={HomeScreen} exact />

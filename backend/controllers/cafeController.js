@@ -7,7 +7,7 @@ import Cafe from '../models/cafeModel.js'
 const getCafe = asyncHandler(async (req,res) => {
     const cafe = await Cafe.find({})
     res.status(200).json({
-        cafe:cafe
+        cafes:cafe
     })
 })
 

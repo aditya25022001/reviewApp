@@ -20,9 +20,11 @@ export const MovieScreen = () => {
     },[dispatch])
     return (
         <div className='pt-5 mt-4'>
-         {loading && <Loader/>}
-         {error && <Message message={error} variant='error'/>}
-         {movies && movies.map(movie=>(
+         {loading 
+         ? <Loader/>
+         : error 
+         ? <Message message={error} variant='error'/>
+         : movies && movies.map(movie=>(
              <Movie key={movie._id} name={movie.name} image={movie.image} genre={movie.genre} description={movie.description} cast={movie.cast} availableOn={movie.availableOn} releaseDate={movie.releaseDate} />
          ))}   
         </div>

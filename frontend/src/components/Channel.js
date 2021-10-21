@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const DeviceScreen = () => {
+export const Channel = () => {
     return (
         <div>
             

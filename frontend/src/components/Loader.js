@@ -1,10 +1,10 @@
 import React from 'react'
-import GradeRoundedIcon from '@material-ui/icons/GradeRounded';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 export const Loader = () => {
     return (
-        <div style={{ width:'max-content', paddingTop:'15rem' }} className='mx-auto loader'>
-            <GradeRoundedIcon style={{ color:'gold', fontSize:'7rem' }} />
+        <div className='mx-auto mt-5 pt-5' style={{ width:'max-content' }}>
+            <CircularProgress style={{ color:'black' }} size={50} thickness={2} />
         </div>
-    )
+        )
 }
