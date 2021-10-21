@@ -41,7 +41,7 @@ app.use('/api/cafes',cafeRoutes)
 
 app.use('/api/places',placeRoutes)
 
-app.use('/api/tubes',tubeRoutes)
+app.use('/api/channels',tubeRoutes)
 
 app.use('/api/websites',webRoutes)
 

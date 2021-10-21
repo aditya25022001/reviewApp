@@ -6,6 +6,11 @@ import { getUserProfileReducer, updateUserProfileReducer } from './reducers/prof
 import { getMoviesReducer } from './reducers/movieReducers'
 import { getAutomobilesReducer } from './reducers/autoReducers'
 import { getCafesReducer } from './reducers/cafeReducers'
+import { getDevicesReducer } from './reducers/deviceReducers'
+import { getPlacesReducer } from './reducers/placeReducers'
+import { getAppsReducer } from './reducers/appReducers'
+import { getChannelsReducer } from './reducers/channelReducers'
+import { getWebsitesReducer } from './reducers/webReducers'
 
 const reducer = combineReducers({
 
@@ -22,6 +27,16 @@ const reducer = combineReducers({
     userGetAutomobiles : getAutomobilesReducer,
 
     userGetCafes : getCafesReducer,
+
+    userGetDevices : getDevicesReducer,
+
+    userGetPlaces : getPlacesReducer,
+
+    userGetApps : getAppsReducer,
+
+    userGetChannels : getChannelsReducer,
+
+    userGetWebsites : getWebsitesReducer,
 })
 
 const userInfoFromStorage = sessionStorage.getItem('userInfo') ? JSON.parse(sessionStorage.getItem('userInfo')) : null

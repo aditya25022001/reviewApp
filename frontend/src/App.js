@@ -15,6 +15,11 @@ import { ProfileScreen } from './screens/ProfileScreen'
 import { MovieScreen } from './screens/MovieScreen'
 import { AutomobileScreen } from './screens/AutomobileScreen'
 import { CafeScreen } from './screens/CafeScreen'
+import { DeviceScreen } from './screens/DeviceScreen'
+import { PlaceScreen } from './screens/PlaceScreen'
+import { ApplicationScreen } from './screens/ApplicationScreen';
+import { ChannelScreen } from './screens/ChannelScreen';
+import { WebsiteScreen } from './screens/WebsiteScreen';
 
 function App() {
   const userLogin = useSelector(state => state.userLogin)
@@ -30,6 +35,11 @@ function App() {
         <Route path='/movies' component={MovieScreen} exact />
         <Route path='/automobiles' component={AutomobileScreen} exact />
         <Route path='/cafes' component={CafeScreen} exact />
+        <Route path='/devices' component={DeviceScreen} exact />
+        <Route path='/places' component={PlaceScreen} exact />
+        <Route path='/apps' component={ApplicationScreen} exact />
+        <Route path='/channels' component={ChannelScreen} exact />
+        <Route path='/websites' component={WebsiteScreen} exact />
         <Route path='/forgot/otp' component={EnterOtpScreen} exact />
         <Route path='/forgot/reset/:id' component={ResetPasswordScreen} exact />
         <Route path='/' component={HomeScreen} exact />

@@ -36,12 +36,12 @@ const entities = [
     {
         name:'Applications',
         image:<AndroidIcon/>,
-        to:'/applications'
+        to:'/apps'
     },
     {
         name:'Youtube Channels',
         image:<YouTubeIcon/>,
-        to:'/ytchannels'
+        to:'/channels'
     },
     {
         name:'Websites',

@@ -5,6 +5,7 @@ const devices = [
         company:"Samsung",
         launchDate:"11 June 2019",
         price:"Rs.16,444 to Rs.17,400",
+        image:"https://5.imimg.com/data5/EZ/BB/SI/SELLER-92529419/samsung-galaxy-m40-midnight-blue-phone-500x500.jpg",
         reviews:[],
         reviewsBy:[],
     }
