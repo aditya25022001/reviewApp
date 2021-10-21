@@ -22,8 +22,8 @@ export const WebsiteScreen = () => {
             ? <Loader/>
             : error
             ? <Message message={error} variant='error'/>
-            : websites && websites.map(website => (
-                <Website key={website._id} name={website.name} image={website.image} url={website.url} description={website.description} launched={website.launched} />
+            : websites && websites.map((website,index) => (
+                <Website key={index} name={website.name} image={website.image} url={website.url} description={website.description} launched={website.launched} />
             ))
             }
         </div>

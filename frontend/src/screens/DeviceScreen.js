@@ -22,8 +22,8 @@ export const DeviceScreen = () => {
             ? <Loader/>
             : error
             ? <Message error={error} variant='error'/>
-            : devices && devices.map(device => (
-                <Device key={device._id} name={device.name} company={device.company} price={device.price} image={device.image} description={device.description} launchDate={device.launchDate} />
+            : devices && devices.map((device,index) => (
+                <Device key={index} name={device.name} company={device.company} price={device.price} image={device.image} description={device.description} launchDate={device.launchDate} />
             ))
             }            
         </div>

@@ -22,8 +22,8 @@ export const CafeScreen = () => {
             ? <Loader/>
             : error
             ? <Message error={error} variant='error'/>
-            : cafes && cafes.map(cafe => (
-                <Cafe key={cafe._id} name={cafe.name} description={cafe.description} image={cafe.image} established={cafe.established} location={cafe.location} />
+            : cafes && cafes.map((cafe,index) => (
+                <Cafe key={index} name={cafe.name} description={cafe.description} image={cafe.image} established={cafe.established} location={cafe.location} />
             )) 
             }
         </div>

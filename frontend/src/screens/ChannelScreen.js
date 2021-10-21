@@ -22,8 +22,8 @@ export const ChannelScreen = () => {
             ? <Loader/>
             : error
             ? <Message error={error} variant='error'/>
-            : channels && channels.map(channel => (
-                <Channel key={channel._id} name={channel.name} image={channel.image} description={channel.description} url={channel.url} subscribers={channel.subscribers} category={channel.category} />
+            : channels && channels.map((channel,index) => (
+                <Channel key={index} name={channel.name} image={channel.image} description={channel.description} url={channel.url} subscribers={channel.subscribers} category={channel.category} />
             ))
             }            
         </div>

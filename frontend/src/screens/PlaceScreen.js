@@ -22,8 +22,8 @@ export const PlaceScreen = () => {
             ? <Loader/>
             : error
             ? <Message error={error} variant='error'/>
-            : places && places.map(place => (
-                <Place key={place._id} name={place.name} image={place.image} description={place.description} location={place.location} type={place.type} />
+            : places && places.map((place,index) => (
+                <Place key={index} name={place.name} image={place.image} description={place.description} location={place.location} type={place.type} />
             ))
             }            
         </div>

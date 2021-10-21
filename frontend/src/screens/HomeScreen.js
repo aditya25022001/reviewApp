@@ -12,8 +12,8 @@ export const HomeScreen = () => {
     return (
         <div style={{ padding:'5rem 0.5rem 3rem 0.5rem' }} className='mx-auto'>
             <div style={{ display:'flex', flexWrap:'wrap' }}>
-                {entities.map(each => (
-                    <Entity key={each} name={each.name} image={each.image} to={each.to} />
+                {entities.map((each,index) => (
+                    <Entity key={index} name={each.name} image={each.image} to={each.to} />
                     ))}
                 <Entity name="Add Entity" disabled={!userInfo || (userInfo && !userInfo.isAdmin)} image={<AddIcon/>} to="/add-entity" />
             </div>

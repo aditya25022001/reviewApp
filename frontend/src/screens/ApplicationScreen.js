@@ -22,8 +22,8 @@ export const ApplicationScreen = () => {
             ? <Loader/>
             : error 
             ? <Message message={error} variant='error'/>
-            : apps && apps.map(app => (
-                <Application key={app._id} name={app.name} logo={app.logo} description={app.description} launch={app.launch} category={app.category} size={app.size} />
+            : apps && apps.map((app,index) => (
+                <Application key={index} name={app.name} logo={app.logo} description={app.description} launch={app.launch} category={app.category} size={app.size} />
             ))}
         </div>
     )

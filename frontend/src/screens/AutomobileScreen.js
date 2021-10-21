@@ -22,8 +22,8 @@ export const AutomobileScreen = () => {
             ? <Loader/>
             : error 
             ? <Message message={error} variant='error'/>
-            : automobiles && automobiles.map(automobile => (
-                <Automobile key={automobile._id} name={automobile.name} image={automobile.image} company={automobile.company} description={automobile.description} price={automobile.price} />
+            : automobiles && automobiles.map((automobile,index) => (
+                <Automobile key={index} name={automobile.name} image={automobile.image} company={automobile.company} description={automobile.description} price={automobile.price} />
             ))}
         </div>
     )

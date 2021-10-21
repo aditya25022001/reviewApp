@@ -24,8 +24,8 @@ export const MovieScreen = () => {
          ? <Loader/>
          : error 
          ? <Message message={error} variant='error'/>
-         : movies && movies.map(movie=>(
-             <Movie key={movie._id} name={movie.name} image={movie.image} genre={movie.genre} description={movie.description} cast={movie.cast} availableOn={movie.availableOn} releaseDate={movie.releaseDate} />
+         : movies && movies.map((movie,index)=>(
+             <Movie key={index} name={movie.name} image={movie.image} genre={movie.genre} description={movie.description} cast={movie.cast} availableOn={movie.availableOn} releaseDate={movie.releaseDate} />
          ))}   
         </div>
     )
