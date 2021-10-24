@@ -15,6 +15,7 @@ const getProfile = asyncHandler(async (req,res) => {
             reviews: user.reviews,
             number: user.number,
             isAdmin:user.isAdmin,
+            profilePic: user.profilePic,
         })
     }
     else{
@@ -37,6 +38,7 @@ const updateUserProfile = asyncHandler(async (req,res) => {
         user.number = number || user.number
         user.password = user.password
         user.isAdmin = user.isAdmin
+        user.profilePic = user.profilePic
         const updatedUser = await user.save()
         res.json({
             _id:updatedUser._id,

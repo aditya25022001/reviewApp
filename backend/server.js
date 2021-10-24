@@ -11,6 +11,7 @@ import deviceRoutes from './routes/deviceRoutes.js'
 import placeRoutes from './routes/placeRoutes.js'
 import tubeRoutes from './routes/tubeRoutes.js'
 import webRoutes from './routes/webRoutes.js'
+import uploadRoutes from './routes/uploadRoutes.js'
 import { notFound, errorHandler } from './middlewares/errorMiddleware.js'
 
 dotenv.config()
@@ -44,6 +45,8 @@ app.use('/api/places',placeRoutes)
 app.use('/api/channels',tubeRoutes)
 
 app.use('/api/websites',webRoutes)
+
+app.use('/api/upload',uploadRoutes)
 
 app.get('/',(req,res) => {
     res.send('Hello World')

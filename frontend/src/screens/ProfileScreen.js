@@ -6,6 +6,7 @@ import { Loader } from '../components/Loader'
 import { Message } from '../components/Message'
 import { Avatar } from '@material-ui/core';
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
+import axios from 'axios'
 
 export const ProfileScreen = ({ history }) => {
     
@@ -16,6 +17,28 @@ export const ProfileScreen = ({ history }) => {
     const { userInfo } = userLogin
 
     const dispatch = useDispatch()
+
+    const uploadProfileHandler = async (e) => {
+        e.preventDefault()
+        const file = e.target.files[0]
+        const formData = new FormData()
+        formData.append('application',file)
+        try{
+            const config = {
+                headers:{
+                    'Content-type':'multipart/form-data',
+                    'Authorization': `Bearer ${userInfo.token}`
+                }
+            }
+            const { data } = await axios.post('/api/upload', formData, config)
+            if(data){
+                console.log(data)
+            }
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
 
     useEffect(()=>{
         if(!userInfo){
@@ -45,6 +68,11 @@ export const ProfileScreen = ({ history }) => {
                     <h4>{user.name}</h4>
                     <h4>{user.email}</h4>
                     <h4>{user.number}</h4>
+                    <label style={{ width:'100%', cursor:'pointer' }} className="rounded card">
+                        <input type="file" onChange={uploadProfileHandler} />
+                        SELECT FILE AND UPLOAD
+                    </label>
+                    <img src={`/uploads/profilePics/${user.profilePic}`} alt="hello"/>
                 </div>
                 }
             </Container>
