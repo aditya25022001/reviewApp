@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Container, Form } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { getProfileAction } from '../actions/profileActions'
+import { getProfileAction, updateUserProfile } from '../actions/profileActions'
 import { Loader } from '../components/Loader'
 import { Message } from '../components/Message'
 import { Tooltip, Button, TextField, Avatar } from '@material-ui/core'
@@ -16,6 +16,9 @@ export const ProfileScreen = ({ history }) => {
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
 
+    const userUpdate = useSelector(state => state.userUpdate)
+    const { loading:loadingUpdate, success, error:errorUpdate } = userUpdate
+
     const dispatch = useDispatch()
 
     const [name, setName] = useState("")
@@ -24,6 +27,11 @@ export const ProfileScreen = ({ history }) => {
 
     const [imageUpload, setImageUpload] = useState(false)
     const [imageError, setImageError] = useState(false)
+
+    const updateProfileHandler = (e) => {
+        e.preventDefault()
+        dispatch(updateUserProfile({ _id:userInfo._id, name:name, email:email, number:number }))
+    }
 
     const uploadProfileHandler = async (e) => {
         e.preventDefault()
@@ -73,10 +81,11 @@ export const ProfileScreen = ({ history }) => {
     return (
         <div>
             <Container className='mx-auto mt-5' style={{ paddingTop:'2rem' }}>
-                {loading 
+                {success && <Message message="Profile updated successfully" variant='success' />}
+                {loading || loadingUpdate
                 ? <Loader/> 
-                : error || imageError
-                ? <Message message={error || "Invalid file type"} variant='error' />
+                : error || imageError || errorUpdate
+                ? <Message message={error || errorUpdate || "Invalid file type"} variant='error' />
                 : !imageError &&
                 <div>
                     <div className={`d-flex mx-auto`} style={{ alignItems:'baseline', width:'max-content' }}>
@@ -90,7 +99,7 @@ export const ProfileScreen = ({ history }) => {
                             </Tooltip>
                         </div>
                     </div>
-                    <Form className='mx-auto profile_form_component' style={{ paddingBottom:'5rem' }}>
+                    <Form onSubmit={updateProfileHandler} className='mx-auto profile_form_component' style={{ paddingBottom:'2rem' }}>
                         <Form.Group className='my-3'>
                             <TextField label="ID" variant="outlined" value={user._id} disabled={true} readOnly />
                         </Form.Group>
@@ -110,7 +119,7 @@ export const ProfileScreen = ({ history }) => {
                             <TextField label="Reviews" variant="outlined" value={user.reviews && user.reviews.length} disabled={true} readOnly />
                         </Form.Group>
                         <Form.Group className='my-3'>
-                            <Button variant='contained' className='py-3' style={{ color:'white', backgroundColor:'black', width:'100%' }}>Update</Button>
+                            <Button type="submit" variant='contained' className='py-3' style={{ color:'white', backgroundColor:'black', width:'100%' }}>Update</Button>
                         </Form.Group>
                     </Form>
                 </div>

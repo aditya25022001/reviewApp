@@ -1,5 +1,6 @@
 import asyncHandler from 'express-async-handler'
 import User from '../models/userModel.js'
+import generateToken from '../utils/generateToken.js'
 
 //route       GET/api/profile
 //access      private
@@ -48,6 +49,8 @@ const updateUserProfile = asyncHandler(async (req,res) => {
             points: updatedUser.points,
             reviews: updatedUser.reviews,
             isAdmin:updatedUser.isAdmin,
+            profilePic:updatedUser.profilePic,
+            token:generateToken(updatedUser._id),
         })
     }
     else{

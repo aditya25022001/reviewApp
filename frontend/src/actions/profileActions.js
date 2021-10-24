@@ -1,4 +1,4 @@
-import { VIEW_PROFILE_REQUEST, VIEW_PROFILE_SUCCESS, VIEW_PROFILE_FAIL, UPDATE_PROFILE_REQUEST, UPDATE_PROFILE_SUCCESS, UPDATE_PROFILE_FAIL } from "../constants/profileConstants";
+import { VIEW_PROFILE_REQUEST, VIEW_PROFILE_SUCCESS, VIEW_PROFILE_FAIL, UPDATE_PROFILE_REQUEST, UPDATE_PROFILE_SUCCESS, UPDATE_PROFILE_FAIL, UPDATE_PROFILE_RESET } from "../constants/profileConstants";
 import axios from 'axios'
 
 export const getProfileAction = () => async(dispatch, getState) => {
@@ -44,6 +44,9 @@ export const updateUserProfile = (user) => async(dispatch, getState) => {
             payload:data
         })
         sessionStorage.setItem('userInfo',JSON.stringify(data))
+        setTimeout(()=>{
+            dispatch({ type:UPDATE_PROFILE_RESET })
+        },3000)
     } catch (error) {
         dispatch({
             type:UPDATE_PROFILE_FAIL,
