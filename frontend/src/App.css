@@ -21,6 +21,9 @@
 *::-webkit-scrollbar-thumb:hover{
   background-color:rgb(143, 143, 143);
 }
+.Mui-disabled{
+  color:black !important;
+}
 .MuiFormControl-root{
   width:100% !important;
 }
@@ -36,6 +39,9 @@
   margin-top:7% !important;
   background-color:white !important;
   border:0.5px solid rgb(153, 153, 153);
+}
+.profile_form_component{
+  width:55%;
 }
 .form_header{
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -113,12 +119,18 @@ input[type="file"]{
     width:80%;
     margin-top:15% !important;
   }
+  .profile_form_component{
+    width:80%;
+  }
   .form_component_contact{
     width:80%;
     margin-top: 17% !important;
   }
 }
 @media screen and (max-width:522px){
+  .profile_form_component{
+    width:95%;
+  }
   .entity_card, .movie_card{
     width:90%;
   }

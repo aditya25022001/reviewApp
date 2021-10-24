@@ -21,8 +21,17 @@ const storage = multer.diskStorage({
         const __dirname = path.resolve()
         let folderName = 'profilePics'
         const fileName = `${req.user.email.split(".")[0]}_${req.user.number}${path.extname(file.originalname)}`
-        if(fs.existsSync(path.join(__dirname,`/frontend/public/uploads/${folderName}/${fileName}`))){
-            fs.unlinkSync(path.join(__dirname,`/frontend/public/uploads/${folderName}/${fileName}`))
+        const relativePath = path.join(__dirname,`/frontend/public/uploads/${folderName}/${fileName}`)
+        const folderPath = path.join(__dirname,`/frontend/public/uploads/${folderName}`)
+        fs.readdir(folderPath,(err, files) => {
+            files.forEach(file => {
+                if(file.split('.')[0]===fileName.split('.')[0]){
+                    fs.unlinkSync(folderPath+'/'+file)
+                }
+            })
+        })
+        if(fs.existsSync(relativePath)){
+            fs.unlinkSync(relativePath)
         }
         callBack(null, fileName)
     }

@@ -54,6 +54,7 @@ const login = asyncHandler(async(req,res) => {
                 reviews:user.reviews,
                 token: generateToken(user._id),
                 isAdmin:user.isAdmin,
+                number:user.number
             })
         }
         else{

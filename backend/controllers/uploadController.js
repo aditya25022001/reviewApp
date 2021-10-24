@@ -17,7 +17,8 @@ const uploadProfilePic = asyncHandler(async(req,res)=>{
         res.status(200).json({
             message:"Uploaded Successfully",
             filename : req.file.filename,
-            _id:updatedUser._id
+            _id:updatedUser._id,
+            success:true
         })
     }
     else{
