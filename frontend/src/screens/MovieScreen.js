@@ -21,7 +21,7 @@ export const MovieScreen = () => {
         dispatch(getMoviesAction())
     },[dispatch])
     return (
-        <div className='pt-5 mt-4 d-flex'>
+        <div className='pt-5 mt-4' style={{ display:'flex', flexWrap:'wrap' }}>
          {loading 
          ? <Loader/>
          : error 

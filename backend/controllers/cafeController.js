@@ -11,4 +11,28 @@ const getCafe = asyncHandler(async (req,res) => {
     })
 })
 
-export { getCafe }
+//route       POST/api/cafes/addcafe
+//access      private
+//desc        add cafe in the database
+const addCafe = asyncHandler(async (req,res) => {
+    const { name, phone, image, description, location, established } = req.body
+    const cafeExists = await Cafe.findOne({ name:new RegExp(name, 'i')})
+    if(!cafeExists){
+        const cafe = await Cafe.create({
+            name, phone, image, description, location, established, reviews:[], reviewsBy:[]
+        })
+        if(cafe){
+            res.status(201).json({
+                message:"Cafe added successfully",
+                ...cafe
+            })
+        }
+    }
+    else{
+        res.status(400).json({
+            message:"Cafe already exists"
+        })
+    }
+})
+
+export { getCafe, addCafe }

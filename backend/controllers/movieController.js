@@ -19,15 +19,7 @@ const addMovie = asyncHandler(async (req,res) => {
     const movieExists = await Movie.findOne({ name:new RegExp(name,'i') })
     if(!movieExists) {
         const movie = await Movie.create({
-            name: name,
-            image: image,
-            genre: genre,
-            description: description,
-            releaseDate: releaseDate,
-            availableOn: availableOn,
-            cast: cast,
-            reviews:[],
-            reviewsBy:[]
+            name, image, genre, description, releaseDate, availableOn, cast, reviews:[], reviewsBy:[]
         })
         if(movie){
             res.status(201).json({
