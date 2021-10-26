@@ -11,4 +11,37 @@ const getMovies = asyncHandler(async (req,res) => {
     })
 })
 
-export { getMovies }
+//route       POST/api/movies/addmovie
+//access      private
+//desc        add movie in the database
+const addMovie = asyncHandler(async (req,res) => {
+    const { name, image, description, genre, cast, releaseDate, availableOn } = req.body
+    const movieExists = await Movie.findOne({ name:new RegExp(name,'i') })
+    if(!movieExists) {
+        const movie = await Movie.create({
+            name: name,
+            image: image,
+            genre: genre,
+            description: description,
+            releaseDate: releaseDate,
+            availableOn: availableOn,
+            cast: cast,
+            reviews:[],
+            reviewsBy:[]
+        })
+        if(movie){
+            res.status(201).json({
+                message:"Movie added successfully",
+                ...movie
+            })
+        }
+    }
+    else{
+        res.status(400).json({
+            message:"Movie already exists"
+        })
+    }
+
+})
+
+export { getMovies, addMovie }

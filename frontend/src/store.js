@@ -3,7 +3,7 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { registerReducer, loginReducer, sendOtpReducer, resetPasswordreducer } from './reducers/authReducers'
 import { getUserProfileReducer, updateUserProfileReducer } from './reducers/profileReducers'
-import { getMoviesReducer } from './reducers/movieReducers'
+import { getMoviesReducer, addMovieReducer } from './reducers/movieReducers'
 import { getAutomobilesReducer } from './reducers/autoReducers'
 import { getCafesReducer } from './reducers/cafeReducers'
 import { getDevicesReducer } from './reducers/deviceReducers'
@@ -23,6 +23,7 @@ const reducer = combineReducers({
     userUpdate : updateUserProfileReducer,
 
     userGetMovies:getMoviesReducer,
+    userAddMovie : addMovieReducer,
 
     userGetAutomobiles : getAutomobilesReducer,
 
