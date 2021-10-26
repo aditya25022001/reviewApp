@@ -26,7 +26,7 @@ export const getProfileAction = () => async(dispatch, getState) => {
     }
 }
 
-export const updateUserProfile = (user) => async(dispatch, getState) => {
+export const updateUserProfileAction = (user) => async(dispatch, getState) => {
     try {
         dispatch({
             type:UPDATE_PROFILE_REQUEST

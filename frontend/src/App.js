@@ -20,6 +20,7 @@ import { PlaceScreen } from './screens/PlaceScreen'
 import { ApplicationScreen } from './screens/ApplicationScreen';
 import { ChannelScreen } from './screens/ChannelScreen';
 import { WebsiteScreen } from './screens/WebsiteScreen';
+import { AddMovieScreen } from './screens/AddMovieScreen'
 
 function App() {
   const userLogin = useSelector(state => state.userLogin)
@@ -33,6 +34,7 @@ function App() {
         <Route path='/contact' component={ContactScreen} exact />
         <Route path='/profile' component={ProfileScreen} exact />
         <Route path='/movies' component={MovieScreen} exact />
+        <Route path='/addmovie' component={AddMovieScreen} exact />
         <Route path='/automobiles' component={AutomobileScreen} exact />
         <Route path='/cafes' component={CafeScreen} exact />
         <Route path='/devices' component={DeviceScreen} exact />

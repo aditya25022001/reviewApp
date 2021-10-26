@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Container, Form } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { getProfileAction, updateUserProfile } from '../actions/profileActions'
+import { getProfileAction, updateUserProfileAction } from '../actions/profileActions'
 import { Loader } from '../components/Loader'
 import { Message } from '../components/Message'
 import { Tooltip, Button, TextField, Avatar } from '@material-ui/core'
@@ -30,7 +30,7 @@ export const ProfileScreen = ({ history }) => {
 
     const updateProfileHandler = (e) => {
         e.preventDefault()
-        dispatch(updateUserProfile({ _id:userInfo._id, name:name, email:email, number:number }))
+        dispatch(updateUserProfileAction({ _id:userInfo._id, name:name, email:email, number:number }))
     }
 
     const uploadProfileHandler = async (e) => {
@@ -107,10 +107,10 @@ export const ProfileScreen = ({ history }) => {
                             <TextField label="Name" variant="outlined" onChange={e => setName(e.target.value)} value={name} />
                         </Form.Group>
                         <Form.Group className='my-3'>
-                            <TextField label="Email" variant="outlined" onChange={e => setEmail(e.target.value)} value={email} type="email" inputmode="email" />
+                            <TextField label="Email" variant="outlined" onChange={e => setEmail(e.target.value)} value={email} type="email" inputMode="email" />
                         </Form.Group>
                         <Form.Group className='my-3'>
-                            <TextField label="Number" variant="outlined" onChange={e => setNumber(e.target.value)} value={number} inputmode="tel" />
+                            <TextField label="Number" variant="outlined" onChange={e => setNumber(e.target.value)} value={number} inputMode="tel" />
                         </Form.Group>
                         <Form.Group className='my-3'>
                             <TextField label="Points" variant="outlined" value={user.points} disabled={true} readOnly />
