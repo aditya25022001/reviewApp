@@ -1,7 +1,7 @@
 {
-  "name": "reviewapp",
+  "name": "application",
   "version": "1.0.0",
-  "description": "A review application to review all sorts of entities be it movies, places, restaurants etc.",
+  "description": "application",
   "main": "server.js",
   "type": "module",
   "scripts": {
@@ -16,14 +16,7 @@
     "type": "git",
     "url": "git+https://github.com/aditya25022001/reviewApp.git"
   },
-  "keywords": [
-    "Review",
-    "Movies",
-    "Applications",
-    "Web",
-    "Web",
-    "Series"
-  ],
+  "keywords": [],
   "author": "Aditya Uday Ubale",
   "license": "MIT",
   "bugs": {

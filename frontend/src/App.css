@@ -104,15 +104,21 @@ input[type="file"]{
 #disabled_entity:hover{
   transform:scale(1) !important; 
 }
-.entity_card, .movie_card{
+.entity_card, .object_card{
   width:32.3%;
   cursor:pointer;
   box-shadow: 1px 0px 8px 1px rgb(241, 241, 241);
   transition-duration:1s;
 }
-.entity_card:hover, .movie_card:hover {
+.entity_card:hover {
   transform:scale(1.02);
   transition-duration:0.5s;
+}
+.overflow{
+  display:none;
+}
+.object_card:hover>.overflow{
+  display:block;
 }
 @media screen and (max-width:1009px) and (min-width:522px){
   .form_component{
@@ -131,7 +137,7 @@ input[type="file"]{
   .profile_form_component{
     width:95%;
   }
-  .entity_card, .movie_card{
+  .entity_card, .object_card{
     width:90%;
   }
   .form_component{
